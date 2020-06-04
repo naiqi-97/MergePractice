@@ -49,8 +49,18 @@ let playList= {
             ["可樂" , "mp6E_avCnXc"],
             ["勇氣" , "b-XPRDSFC-M"],
             ["心引力" , "-oHYFBE8bgk"],
-            ["驚雷" , "uDtIIu8okUU"]
-
+            ["驚雷" , "uDtIIu8okUU"],
+            ["懸日","Nf1C1fSJG_8"],
+            ["你的酒館對我打了烊","ynaARgs_yvQ"],
+            ["來自天堂的魔鬼","FWtbGkpdoP4"],
+            ["失眠飛行","a4eR-5OJ-7Q"],
+            ["來個蹦蹦","R2V9sHAlLuQ"],
+            ["我很快樂","Ezd_DLawfHI"],
+            ["多想在平庸的生活擁抱你","kAP_x0krk7A"],
+            ["你啊你啊","saiJbqHBuew"],
+            ["紙短情長","FuDdstaZXdw"],
+            ["風雲變色","KZpnSghZ-Q"]
+               
         ],
         "korea":[
             ["AnySong" , "UuV2BmJ1p_I"],
@@ -82,7 +92,7 @@ let playList= {
             ["GO","5AEYijM9zPM"],
             ["Dumhdurum","WqzTRK5GPWQ"],
             ["Good Guy","n8zQysKciao"],
-            ["on","kFNJTAaAYnU"],
+            ["on","aQO0cat45Ys"],
             ["HIP","KhTeiaCezwM"],
             ["LION","6oanIo_2Z4Q"],
             ["FLASH","LlQEKB2H7z4"],
@@ -100,14 +110,33 @@ let playList= {
             ["Hellevator","O2_snIiKBYE"],
             ["HIT","F9CrRG6j2SM"],
             ["Kill This Love","2S24-y0Ij3Y"],
-            ["Adios","Wc5d4sZsMTg"],
+            ["Adios","r0lA20n9Q6U"],
             ["DDD","axVvZrDz60k"],
-            ["SHAKE IT","r-QXlHzYheg"],            
+            ["SHAKE IT","r-QXlHzYheg"],
+            ["FANTASIA","p2JzPlpA1Iw"],
+            ["PUNCH","U08OSl3V4po"],   
+            ["Yours","N2dsnGc7TFk"],
+            ["Nonstop","iDjQSdN_ig8"],  
+            ["Stay Tonight","YPFIh0dfYfw"],
+            ["Spit it out","V8FXWf0s7K0"],
+            ["Let's Love","Ygrv55VRRas"],
+            ["DUN DUN","NoYKBAajoyo"],
+            ["DAZZLE DAZZLE","RTeOt6n90vM"],
+            ["kick it","2OvyA2__Eas"], 
+            ["교차로 (Crossroads)","kx5TWKPE5sU"],
+            ["knock","Zz7YZtpz2Ek"],
+            ["FANCY","kOHB85vDuow"],
+            ["Bomb Bomb","Y44vb5I3OAU"],
+            ["DALLA DALLA","pNfTK39k55U"],
+            ["Violeta","Z8_aiEDLoY4"],
+            ["Eung Eung","499YUeNoYVE"],
+            ["wolf","cyiMFg_a50s"],
+            ["ko ko bop","4Q5zzRriFyU"]
         ]
    
 };
 //播放起訖秒數
-let playTime = [80,90];
+let playTime = [75,85];
 let topic =[
     "中文歌曲",
     "韓文歌曲",

@@ -52,6 +52,22 @@ function loadId(vId){
 function stopMusic(){
     player.stopVideo();
 }
+function setPosition(topic, currentPlayIndex){
+    switch(topic){
+        case 0:
+            var temp =null; 
+            do{
+               temp = Math.floor(Math.random()*playList.chinese.length);   
+            }while(temp==playList.chinese.indexOf(currentPlayIndex));
+            return temp;
+        case 1:
+            var temp=null; 
+            do{
+               temp = Math.floor(Math.random()*playList.korea.length);   
+            }while(temp==playList.chinese.indexOf(currentPlayIndex));
+            return temp;
+    }  
+}
 $(document).ready(function(){   
     let currentQuiz=null;
     $("#playMusic").toggle();
@@ -78,17 +94,6 @@ $(document).ready(function(){
                 playList.korea[randomChildNumber]=playList.korea[numberOfListItem-x-1];
         } 
    
-    });
-    $("#englishButton").click(function(){
-        $("#optionToTopic").toggle();
-        $("#GuessButton").toggle();
-        currentTopicNum=2;
-        let numberOfListItem = playList.english.length;
-        for(let x=0;x<10;x++){
-                let randomChildNumber = Math.floor(Math.random()*(numberOfListItem-1));
-                currentPlayList.push(playList.english[randomChildNumber]);
-                playList.english[randomChildNumber]=playList.english[numberOfListItem-x-1];
-        } 
     });
     $("#GuessButton").click(function(){        
         if(currentTopicNum==null){
@@ -117,10 +122,20 @@ $(document).ready(function(){
                         "<input name='options' type='radio' value ="+"<label>"+currentPlayList[currentQuiz][0]+"</label><br><br>"
                     );
                 }else{
-                    let temp=null;     
-                    $("#answers").append(
-                        "<input name='options' type='radio' value="+"<label>"+currentPlayList[currentQuiz+x+1][0]+"</label><br><br>"
-                    );
+                    console.log(setPosition(currentTopicNum,currentPlayList[currentQuiz]));
+                    let index = setPosition(currentTopicNum,currentPlayList[currentQuiz]);
+                    switch(currentTopicNum){
+                        case 0:
+                            $("#answers").append(
+                                "<input name='options' type='radio' value="+"<label>"+playList.chinese[index][0]+"</label><br><br>"
+                            );
+                            break;
+                        case 1:
+                            $("#answers").append(
+                                "<input name='options' type='radio' value="+"<label>"+playList.korea[index][0]+"</label><br><br>"
+                            );
+                            break;    
+                    }    
                 }
             }          
             $("#GuessButton").attr("value","下一題");
@@ -164,21 +179,27 @@ $(document).ready(function(){
                                     $("#answers").append(
                                         "<input name='options' type='radio' value="+"<label>"+currentPlayList[currentQuiz][0]+"</label><br><br>"
                                     );
-                                }else{       
-                                    if(currentQuiz<5){
-                                        $("#answers").append(
-                                            "<input name='options' type='radio' value="+"<label>"+currentPlayList[currentQuiz+x+2][0]+"</label><br><br>"
-                                        );
-                                    }else{
-                                        $("#answers").append(
-                                            "<input name='options' type='radio' value="+"<label>"+currentPlayList[currentQuiz+x-3][0]+"</label><br><br>"
-                                        );
-                                    }
-                                                               
+                                }else{             
+                                    let index=setPosition(currentTopicNum,currentPlayList[currentQuiz]);    
+                                    switch(currentTopicNum){
+                                        case 0:
+                                            $("#answers").append(
+                                                "<input name='options' type='radio' value="+"<label>"+playList.chinese[index][0]+"</label><br><br>"
+                                            );
+                                            break;
+                                        case 1:
+                                            $("#answers").append(
+                                                "<input name='options' type='radio' value="+"<label>"+playList.korea[index][0]+"</label><br><br>"
+                                            );
+                                            break;    
+                                    }                               
                                 }
+                            }  
+                            if(currentQuiz==currentPlayList.length-2){
+                                $("#GuessButton").attr("value","結束猜歌"); 
+                            }else{
+                                $("#GuessButton").attr("value","下一題"); 
                             }                                                        
-                            $("#GuessButton").attr("value","下一題"); 
-
                         }
                         return false;
                     }
@@ -188,3 +209,4 @@ $(document).ready(function(){
     });
   
 });
+
