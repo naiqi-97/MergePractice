@@ -60,7 +60,7 @@ function setPosition(topic, currentPlayIndex){
             var temp=null; 
             do{
                temp = Math.floor(Math.random()*playList.korea.length);   
-            }while(temp==playList.chinese.indexOf(currentPlayIndex));
+            }while(temp==playList.korea.indexOf(currentPlayIndex));
             return temp;
     }  
 }
@@ -72,8 +72,8 @@ function randomNumbers(topic){
             }
             break;
         case 1:
-            for(let y=0;y<playList.korea.length;y++){
-                tempArray.push(y);
+            for(let x=0;x<playList.korea.length;x++){
+                tempArray.push(x);
             }
             break;
     }
@@ -103,12 +103,13 @@ $(document).ready(function(){
         randomNumbers(currentTopicNum);
         let numberOfListItem = playList.korea.length;
         for(let x=0;x<10;x++){
-               currentPlayList.push(playList.chinese[tempArray[x]]);
+               currentPlayList.push(playList.korea[tempArray[x]]);
         } 
    
     });
     $("#GuessButton").click(function(){        
         if(currentTopicNum==null){
+
             $("#home").toggle();
             $("#question").empty();
             $("#answers").empty(); 
@@ -165,6 +166,7 @@ $(document).ready(function(){
                             let finalResult = score;
                             score=0;
                             currentPlayList=[];
+                            tempArray=[];
                             $("#question").text("最終成績");
                             $("#answers").empty();
                             $("#result").toggle();
