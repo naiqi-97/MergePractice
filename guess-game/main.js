@@ -144,7 +144,7 @@ $(document).ready(function(){
                 $(":radio"),function(i,val){
                     if(val.checked){
                         if(i==correctPosition){
-                            score++;
+                            score++;                           
                         }
                         if(currentQuiz==currentPlayList.length-1){
                             stopMusic();
@@ -155,11 +155,15 @@ $(document).ready(function(){
                             $("#question").text("最終成績");
                             $("#answers").empty();
                             $("#playMusic").toggle();
-                            if(finalResult<5){
+                            if(finalResult<3){
+                                var audio = new Audio(sound[1]);
+                                audio.play();
                                 $("#answers").append("QQ~只有"+finalResult+"分,可以再繼續加油。");
-                            }else if(finalResult==5){
+                            }else if(finalResult>3&&finalResult<6){
                                 $("#answers").append("恭喜獲得"+finalResult+"分!");
                             }else{
+                                var audio = new Audio(sound[0]);
+                                audio.play();
                                 $("#answers").append("恭喜獲得"+finalResult+"分!你真是太厲害了!");
                             }                                     
                             currentQuiz=null;

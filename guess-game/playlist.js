@@ -58,9 +58,7 @@ let playList= {
             ["我很快樂","Ezd_DLawfHI"],
             ["多想在平庸的生活擁抱你","kAP_x0krk7A"],
             ["你啊你啊","saiJbqHBuew"],
-            ["紙短情長","FuDdstaZXdw"],
-            ["風雲變色","KZpnSghZ-Q"]
-               
+            ["紙短情長","FuDdstaZXdw"],               
         ],
         "korea":[
             ["AnySong" , "UuV2BmJ1p_I"],
@@ -142,3 +140,7 @@ let topic =[
     "韓文歌曲",
     "西洋歌曲"
 ];
+let sound=[
+    "guess-game/win.mp3",
+    "guess-game/lose.mp3"
+]
