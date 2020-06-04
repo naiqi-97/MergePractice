@@ -2,6 +2,7 @@ var player;
 var currentPlay = 0;
 var currentPlayList=[];
 var currentTopicNum=null;
+var tempArray=[];
 let score=0;
 var correctPosition=null;
 function onYouTubeIframeAPIReady(){
@@ -24,12 +25,7 @@ function onYouTubeIframeAPIReady(){
         }
     });
 }
-function onPlayerReady(event){ 
-   /* $("#playButton").click(function(){      
-        player.playVideo();
-    });*/ 
-    console.log(player.getVolume());
-   
+function onPlayerReady(event){   
 }
 function onPlayerStateChange(event){
     if(Math.floor(player.getCurrentTime())==playTime[1]){
@@ -68,30 +64,50 @@ function setPosition(topic, currentPlayIndex){
             return temp;
     }  
 }
+function randomNumbers(topic){
+    switch(topic){
+        case 0:
+            for(let y=0;y<playList.chinese.length;y++){
+                tempArray.push(y);
+            }
+            break;
+        case 1:
+            for(let y=0;y<playList.korea.length;y++){
+                tempArray.push(y);
+            }
+            break;
+    }
+    tempArray.sort(function(){
+        return Math.random()-0.5;
+    });
+}
 $(document).ready(function(){   
     let currentQuiz=null;
     $("#playMusic").toggle();
     $("#GuessButton").toggle();
+    $("#result").toggle();
     $("#chineseButton").click(function(){
         $("#optionToTopic").toggle();
         $("#GuessButton").toggle();
         currentTopicNum=0;
         let numberOfListItem = playList.chinese.length;
+        randomNumbers(currentTopicNum);
         for(let x=0;x<10;x++){
-                let randomChildNumber = Math.floor(Math.random()*(numberOfListItem-1));
-                currentPlayList.push(playList.chinese[randomChildNumber]);
-                playList.chinese[randomChildNumber]=playList.chinese[numberOfListItem-x-1];
+                /*let randomChildNumber = Math.floor(Math.random()*(numberOfListItem-1));*/
+                currentPlayList.push(playList.chinese[tempArray[x]]);
+                //playList.chinese[randomChildNumber]=playList.chinese[numberOfListItem-x-1];
         } 
     });
     $("#koreaButton").click(function(){
         $("#optionToTopic").toggle();
         $("#GuessButton").toggle();
         currentTopicNum=1;
+        randomNumbers(currentTopicNum);
         let numberOfListItem = playList.korea.length;
         for(let x=0;x<10;x++){
-                let randomChildNumber = Math.floor(Math.random()*(numberOfListItem-1));
-                currentPlayList.push(playList.korea[randomChildNumber]);
-                playList.korea[randomChildNumber]=playList.korea[numberOfListItem-x-1];
+               // let randomChildNumber = Math.floor(Math.random()*(numberOfListItem-1));
+               currentPlayList.push(playList.chinese[tempArray[x]]);
+                //playList.korea[randomChildNumber]=playList.korea[numberOfListItem-x-1];
         } 
    
     });
@@ -104,6 +120,8 @@ $(document).ready(function(){
             $("#optionToTopic").toggle();
             $("#GuessButton").attr("value","進入猜歌");
             $("#GuessButton").toggle();
+            $("#result").empty();
+            $("#result").toggle();
         } 
         if(currentQuiz==null&&currentTopicNum!=null){  
             $("#playMusic").toggle();     
@@ -122,7 +140,7 @@ $(document).ready(function(){
                         "<input name='options' type='radio' value ="+"<label>"+currentPlayList[currentQuiz][0]+"</label><br><br>"
                     );
                 }else{
-                    console.log(setPosition(currentTopicNum,currentPlayList[currentQuiz]));
+                    //console.log(setPosition(currentTopicNum,currentPlayList[currentQuiz]));
                     let index = setPosition(currentTopicNum,currentPlayList[currentQuiz]);
                     switch(currentTopicNum){
                         case 0:
@@ -154,14 +172,19 @@ $(document).ready(function(){
                             currentPlayList=[];
                             $("#question").text("最終成績");
                             $("#answers").empty();
+                            $("#result").toggle();
                             $("#playMusic").toggle();
                             if(finalResult<3){
                                 var audio = new Audio(sound[1]);
                                 audio.play();
+                                $("#result").append("<img src ="+"http://img.youai123.com/ugc/1591261829-2818.gif"+">");
                                 $("#answers").append("QQ~只有"+finalResult+"分,可以再繼續加油。");
                             }else if(finalResult>3&&finalResult<6){
+                                $("#result").append("<img src ="+"http://img.youai123.com/ugc/1591262016-42508.gif"+">");
+                                
                                 $("#answers").append("恭喜獲得"+finalResult+"分!");
                             }else{
+                                $("#result").append("<img src ="+"http://img.youai123.com/ugc/1591260771-71943.gif"+">");
                                 var audio = new Audio(sound[0]);
                                 audio.play();
                                 $("#answers").append("恭喜獲得"+finalResult+"分!你真是太厲害了!");
@@ -199,7 +222,7 @@ $(document).ready(function(){
                                     }                               
                                 }
                             }  
-                            if(currentQuiz==currentPlayList.length-2){
+                            if(currentQuiz==currentPlayList.length-1){
                                 $("#GuessButton").attr("value","結束猜歌"); 
                             }else{
                                 $("#GuessButton").attr("value","下一題"); 
