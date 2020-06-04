@@ -74,7 +74,7 @@ let playList= {
             ["Some" , "jHkxauiiEWs"],
             ["Obsession" , "uxmP4b2a0uY"],
             ["Cherry Bomb" , "LZTxwIuNDSQ"],
-            ["Energetic" , "1K4OmttuMNo"],
+            ["Energetic" , "kfNdEjQl0T0"],
             ["NOT BY THE MOON" , "ladClnnJhqg"],
             ["Shine","Nu2yQ1zYDYU"],
             ["BBIBBI","nM0xDI5R50E"],

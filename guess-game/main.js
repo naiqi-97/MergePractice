@@ -93,9 +93,7 @@ $(document).ready(function(){
         let numberOfListItem = playList.chinese.length;
         randomNumbers(currentTopicNum);
         for(let x=0;x<10;x++){
-                /*let randomChildNumber = Math.floor(Math.random()*(numberOfListItem-1));*/
-                currentPlayList.push(playList.chinese[tempArray[x]]);
-                //playList.chinese[randomChildNumber]=playList.chinese[numberOfListItem-x-1];
+                currentPlayList.push(playList.chinese[tempArray[x]]); 
         } 
     });
     $("#koreaButton").click(function(){
@@ -105,9 +103,7 @@ $(document).ready(function(){
         randomNumbers(currentTopicNum);
         let numberOfListItem = playList.korea.length;
         for(let x=0;x<10;x++){
-               // let randomChildNumber = Math.floor(Math.random()*(numberOfListItem-1));
                currentPlayList.push(playList.chinese[tempArray[x]]);
-                //playList.korea[randomChildNumber]=playList.korea[numberOfListItem-x-1];
         } 
    
     });
@@ -128,7 +124,7 @@ $(document).ready(function(){
             $("#home").toggle();
             currentQuiz=0;                                                  
             currentPlay=currentQuiz;
-            console.log(currentPlayList);
+            //console.log(currentPlayList);
             loadId(currentPlayList[currentPlay][1]);            
             $("#question").text(currentQuiz+1);
             $("#answers").toggle();    
@@ -140,7 +136,6 @@ $(document).ready(function(){
                         "<input name='options' type='radio' value ="+"<label>"+currentPlayList[currentQuiz][0]+"</label><br><br>"
                     );
                 }else{
-                    //console.log(setPosition(currentTopicNum,currentPlayList[currentQuiz]));
                     let index = setPosition(currentTopicNum,currentPlayList[currentQuiz]);
                     switch(currentTopicNum){
                         case 0:
