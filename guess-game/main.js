@@ -174,14 +174,14 @@ $(document).ready(function(){
                             if(finalResult<3){
                                 var audio = new Audio(sound[1]);
                                 audio.play();
-                                $("#result").append("<img src ="+"http://img.youai123.com/ugc/1591261829-2818.gif"+">");
+                                $("#result").append("<img src ="+"guess-game/bad.gif"+">");
                                 $("#answers").append("QQ~只有"+finalResult+"分,可以再繼續加油。");
                             }else if(finalResult>3&&finalResult<6){
-                                $("#result").append("<img src ="+"http://img.youai123.com/ugc/1591262016-42508.gif"+">");
+                                $("#result").append("<img src ="+"guess-game/good.gif"+">");
                                 
                                 $("#answers").append("恭喜獲得"+finalResult+"分!");
                             }else{
-                                $("#result").append("<img src ="+"http://img.youai123.com/ugc/1591260771-71943.gif"+">");
+                                $("#result").append("<img src ="+"guess-game/666.gif"+">");
                                 var audio = new Audio(sound[0]);
                                 audio.play();
                                 $("#answers").append("恭喜獲得"+finalResult+"分!你真是太厲害了!");
